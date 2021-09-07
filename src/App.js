@@ -5,6 +5,7 @@ import { store } from './Redux/ReduxManager';
 
 import MainNavigation from './Navigation/MainNavigation';
 import Splash from './Screens/Splash';
+import { LoadingManager } from './Screens/Loading/LoadingManager';
 
 
 
@@ -22,8 +23,9 @@ const App = () => {
 
     return (
         <Provider store={store}>
-         
-            
+
+          
+
             {
                 showSplash ?  //showSplash state değeri true ise splash ekranı false ise MainNavigation render ediliyor.
                     <Splash></Splash>

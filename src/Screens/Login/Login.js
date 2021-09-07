@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 
 import { signUp, signIn } from '../../Firebase/Firebase'
 import { setUserAC } from '../../Redux/UserRedux';
+import { setIsLoadingAC } from '../Loading/LoadingRedux';
 
 
 const Login = props => {
@@ -18,6 +19,8 @@ const Login = props => {
     const dispatch = useDispatch()
 
     const onPress_SignUp = () => {
+        dispatch(setIsLoadingAC(true)); //loading modalı açılır
+
         signUp(email, password)
             .then(responce => {
                 alert("kayıt başarılı")
@@ -28,7 +31,8 @@ const Login = props => {
     }
 
     const onPress_SignIn = () => {
-
+        dispatch(setIsLoadingAC(true)); //loading modalı açılır
+        
         signIn(email, password)
             .then(responce => {
                 // alert("giriş başarılı")

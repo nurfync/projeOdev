@@ -9,6 +9,7 @@ import MessageBox from '../Utils/MessageBox';
 
 import { getMessages } from '../Firebase/Firebase';
 
+
 const Messages = props => {
     const [messageList, setMessageList] = useState([]); 
 
@@ -16,9 +17,10 @@ const Messages = props => {
     const _visibility = val => {
         setVisible(val)
     }
-
+  
     useEffect(() => {
         // subscribe
+
         const off = getMessages(data => {
             setMessageList(data);
         });

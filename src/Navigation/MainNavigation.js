@@ -6,6 +6,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import MyDrawer from './Drawer';
 import Login from '../Screens/Login/Login';
 import { userSelector } from '../Redux/UserRedux';
+import LoadingManager from '../Screens/Loading/LoadingManager';
 
 
 
@@ -16,19 +17,21 @@ const MainNavigation = props => {
      
         return (   
 
-            <NavigationContainer>
-                <StatusBar backgroundColor="white" barStyle="dark-content" />
+            <>
+                <LoadingManager></LoadingManager>
+                <NavigationContainer>
+                    <StatusBar backgroundColor="white" barStyle="dark-content" />
+                    {
+                        loggedInUser ?
+                            <MyDrawer />
 
-                {
-                    loggedInUser ?
-                        <MyDrawer />
-                                          
 
-                        :
-                        <Login />
-                }
+                            :
+                            <Login />
+                    }
                 </NavigationContainer>
 
+                </>
     )
 }
 

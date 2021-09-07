@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FlatList, Text, View, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import { useDispatch } from 'react-redux';
 import Metrics from '../constant/Metrics';
 import { Svgs } from '../StylingConstants';
 import Icon from '../Utils/Icon';
 import DummyData from './Data/DummyData';
-
+import { setIsLoadingAC } from './Loading/LoadingRedux';
 const renderItem = ({ item }) => {
+
+
 
     return (
         <View style={styles.tweetContainer}>
@@ -22,9 +25,9 @@ const renderItem = ({ item }) => {
                     <View style={styles.userTimeInfo}>
                         <View style={{ flexDirection: 'row' }}>
                             <Text>{item.name}</Text>
-                            <Text style={ styles.nicnameTimeText}> @{item.nickname}</Text>
+                            <Text style={styles.nicnameTimeText}> @{item.nickname}</Text>
                         </View>
-                        <Text style={ [styles.nicnameTimeText,{paddingRight: 10}]} >{item.time}</Text>
+                        <Text style={[styles.nicnameTimeText, { paddingRight: 10 }]} >{item.time}</Text>
                     </View>
                     <View >
                         <Text>{item.tweet}</Text>
@@ -54,6 +57,11 @@ const renderItem = ({ item }) => {
     )
 }
 const Home = props => {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+           dispatch(setIsLoadingAC(false));
+    }, [])
     return (
         <View style={{ flex: 1 }}>
             <FlatList
@@ -93,7 +101,7 @@ const styles = StyleSheet.create({
     image: {
         width: Metrics.width * 0.15,
         height: Metrics.width * 0.15,
-        borderRadius:100
+        borderRadius: 100
     },
     tweetInfoCont: {
         flex: 0.8

@@ -27,6 +27,8 @@ const Login = props => {
             })
             .catch(reject => {
                 alert(reject)
+                dispatch(setIsLoadingAC(false));
+
             })
     }
 
@@ -40,6 +42,7 @@ const Login = props => {
             })
             .catch(reject => {
                 alert(reject)
+                dispatch(setIsLoadingAC(false)); 
             })
     }
     return (

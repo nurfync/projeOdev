@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FlatList, Text, View, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { useDispatch } from 'react-redux';
 import Metrics from '../constant/Metrics';
@@ -6,10 +6,10 @@ import { Svgs } from '../StylingConstants';
 import Icon from '../Utils/Icon';
 import DummyData from './Data/DummyData';
 import { setIsLoadingAC } from './Loading/LoadingRedux';
+import LottieView from 'lottie-react-native'
+import HeartBox from '../Utils/HeartBox';
+
 const renderItem = ({ item }) => {
-
-
-
     return (
         <View style={styles.tweetContainer}>
             <View style={styles.tweetContent}>
@@ -39,7 +39,12 @@ const renderItem = ({ item }) => {
                         </TouchableOpacity>
 
                         <TouchableOpacity style={styles.icon}>
-                            <Icon svg={Svgs.Heart} iconStyle={styles.iconColor}></Icon>
+                            {item.isliked
+                                ?
+                                <HeartBox></HeartBox>
+                                :
+                                <Icon svg={Svgs.Heart} iconStyle={styles.iconColor}></Icon>
+                            }
                         </TouchableOpacity>
 
                         <TouchableOpacity style={styles.icon}>
@@ -57,17 +62,18 @@ const renderItem = ({ item }) => {
     )
 }
 const Home = props => {
+
     const dispatch = useDispatch();
 
     useEffect(() => {
-           dispatch(setIsLoadingAC(false));
+        dispatch(setIsLoadingAC(false));
     }, [])
     return (
         <View style={{ flex: 1 }}>
             <FlatList
                 data={DummyData}
                 renderItem={renderItem}
-                keyExtractor={(item, index) => index}
+                keyExtractor={(item, index) => { item.id }}
             />
         </View>
     );
@@ -76,8 +82,9 @@ const Home = props => {
 export default Home;
 const styles = StyleSheet.create({
     icon: {
-        width: Metrics.width * 0.04,
-        aspectRatio: 1
+        width: Metrics.width * 0.1,
+        // height: Metrics.width * 0.04,
+        padding: 5
     },
     iconColor: {
         color: '#6F6F6F'
@@ -87,11 +94,12 @@ const styles = StyleSheet.create({
     },
     tweetContainer: {
         flex: 0,
-        marginVertical: Metrics.width * 0.01
+        marginVertical: Metrics.width * 0.01,
     },
     tweetContent: {
-        flex: 1,
-        flexDirection: 'row'
+        // flex: 1,
+        flexDirection: 'row',
+
     },
     imageContainer: {
         flex: 0.2,
@@ -113,6 +121,8 @@ const styles = StyleSheet.create({
     iconsContainer: {
         flexDirection: 'row',
         justifyContent: 'space-around',
-        marginTop: Metrics.width * 0.03
+        // marginTop: Metrics.width * 0.03,
+        height: Metrics.width * 0.06,
+        alignItems: 'center',
     }
 });

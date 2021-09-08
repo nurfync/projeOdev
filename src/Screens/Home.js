@@ -73,7 +73,7 @@ const Home = props => {
             <FlatList
                 data={DummyData}
                 renderItem={renderItem}
-                keyExtractor={(item, index) => { item.id }}
+                keyExtractor={(item, index) =>  item.id }
             />
         </View>
     );

@@ -15,7 +15,8 @@ import Retweet from './Svgs/TweetSvgs/retweet.svg';
 import Upload from './Svgs/TweetSvgs/upload.svg';
 import NewMessage from './Svgs/TweetSvgs/newMessage.svg';
 import Send from './Svgs/TweetSvgs/send-mail.svg'
-
+import User from './Svgs/TweetSvgs/user.svg'
+import Girl from './Svgs/TweetSvgs/girl.svg'
 
 
 export default Svgs = {
@@ -31,5 +32,7 @@ export default Svgs = {
   Retweet,
   Upload,
   NewMessage,
-  Send
+  Send,
+  User,
+  Girl
 }

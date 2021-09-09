@@ -34,23 +34,31 @@ const Messages = props => {
     const _render_Item = ({ item }) => {
         // item'e basıldığında id'sini gönderiyoruz
         return (
-            <TouchableOpacity style={{ flex: 1,borderColor:'black',borderWidth:1,margin:Metrics.width*0.03,borderRadius:Metrics.width*0.03 }}
+            <TouchableOpacity style={{ flex: 1,borderColor:'#C0C0C0',borderBottomWidth:1,margin:Metrics.width*0.03,paddingVertical:5,justifyContent:'space-between' }}
             >
-                <Text>{ item.to}</Text>
-                <Text
-                    numberOfLines={2}
-                >{item.message}</Text>
+                <View style={{flexDirection:'row', alignItems:'flex-start'}}>
+                    <View style={{width:Metrics.width*0.2,height:Metrics.width*0.12}}>
+                        <Icon svg={Svgs.Girl} iconStyle={{color:'blue'}}>
+
+                        </Icon>
+                    </View>
+                    <View>
+                        <Text>{item.to}</Text>
+                        <Text
+                            numberOfLines={2}
+                        >{item.message}</Text>
+                    </View>
+               </View>
             </TouchableOpacity>
         )
     }
     return (
         <View style={styles.container}>
             <FlatList
-                style={{ flexGrow: 0,marginBottom:80 }}
+                style={{ flexGrow: 0,marginBottom:Metrics.width*0.2 }}
                 data={messageList}
                 renderItem={_render_Item }
-                keyExtractor={(item, index) => item.key+index}
-                inverted
+                keyExtractor={(item, index) => index}
             />
 
             <View style={styles.iconContainer}>

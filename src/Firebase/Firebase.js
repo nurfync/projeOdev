@@ -1,9 +1,13 @@
 import createFBAuth from "@react-native-firebase/auth";
 import database from '@react-native-firebase/database';
+import moment from 'moment';
+
 import { convertedData } from "./ConvertedData";
 
 
 const auth = createFBAuth();
+const timeFormatWithMS = "HH:mm:ss";
+const dateFormat = "DD/MM/YYYY";
 
 export const signUp = async (email, password) => {
     console.log('in signUp function')
@@ -20,10 +24,15 @@ export const signOut = async () => {
 
 export const sendMessage = async (uid, { name, message }) => {
     const newReference = database().ref(`/users/${uid}`).push();
+    let now = moment();
+
+
     newReference
         .set({
             to: name,
-            message: message
+            message: message,
+            time: now.format(timeFormatWithMS),
+            date:now.format(dateFormat)
         })
         .then(() => console.log('Data set.'));
 }

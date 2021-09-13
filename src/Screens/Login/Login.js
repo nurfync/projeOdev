@@ -24,6 +24,8 @@ const Login = props => {
         signUp(email, password)
             .then(responce => {
                 alert("kayıt başarılı")
+                dispatch(setIsLoadingAC(false));
+
             })
             .catch(reject => {
                 alert(reject)
@@ -39,6 +41,8 @@ const Login = props => {
             .then(responce => {
                 // alert("giriş başarılı")
                 dispatch(setUserAC(responce.user))
+                dispatch(setIsLoadingAC(false));
+
             })
             .catch(reject => {
                 alert(reject)

@@ -34,21 +34,21 @@ const Messages = props => {
     const _render_Item = ({ item }) => {
         // item'e basıldığında id'sini gönderiyoruz
         return (
-            <TouchableOpacity style={{ flex: 1,borderColor:'#C0C0C0',borderBottomWidth:1,margin:Metrics.width*0.03,paddingVertical:5,justifyContent:'space-between' }}
-            >
-                <View style={{flexDirection:'row', alignItems:'flex-start'}}>
-                    <View style={{width:Metrics.width*0.2,height:Metrics.width*0.12}}>
-                        <Icon svg={Svgs.Girl} iconStyle={{color:'blue'}}>
-
-                        </Icon>
+            <TouchableOpacity style={styles.messageTouch}>
+                    <View style={styles.iconCont}>
+                        <Icon svg={Svgs.Girl} iconStyle={{color:'blue'}}></Icon>
                     </View>
                     <View>
-                        <Text>{item.to}</Text>
+                    <Text>{item.to}</Text>
+                    <Text>{item.time}</Text>
+                    <Text>{item.date}</Text>
+
+
                         <Text
                             numberOfLines={2}
-                        >{item.message}</Text>
+                    >{item.message}</Text>
+                    
                     </View>
-               </View>
             </TouchableOpacity>
         )
     }
@@ -109,5 +109,18 @@ const styles = StyleSheet.create({
         marginRight: Metrics.width * 0.02,
         padding: Metrics.width * 0.03,
         paddingBottom: 0,
+    },
+    messageTouch: {
+        flex: 1,
+        borderColor: '#C0C0C0',
+        borderBottomWidth: 1,
+        margin: Metrics.width * 0.03,
+        paddingVertical: 5,
+        flexDirection: 'row',
+        alignItems: 'flex-start'
+    },
+    iconCont: {
+        width: Metrics.width * 0.2,
+        height: Metrics.width * 0.12
     }
 });

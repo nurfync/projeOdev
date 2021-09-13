@@ -6,7 +6,7 @@ import { convertedData } from "./ConvertedData";
 
 
 const auth = createFBAuth();
-const timeFormatWithMS = "HH:mm:ss";
+const timeFormatWithMS = "HH:mm";
 const dateFormat = "DD/MM/YYYY";
 
 export const signUp = async (email, password) => {

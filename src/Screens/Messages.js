@@ -39,10 +39,12 @@ const Messages = props => {
                         <Icon svg={Svgs.Girl} iconStyle={{color:'blue'}}></Icon>
                     </View>
                     <View>
-                    <Text>{item.to}</Text>
-                    <Text>{item.time}</Text>
-                    <Text>{item.date}</Text>
-
+                  
+                    <View style={styles.info}>
+                        <Text style={styles.Text}>{item.to}</Text>
+                        <Text style={styles.Text}>{item.time}</Text>
+                        {/* <Text>{item.date}</Text> */}
+                    </View>
 
                         <Text
                             numberOfLines={2}
@@ -58,8 +60,7 @@ const Messages = props => {
                 style={{ flexGrow: 0,marginBottom:Metrics.width*0.2 }}
                 data={messageList}
                 renderItem={_render_Item }
-                keyExtractor={(item, index) => index}
-            />
+                keyExtractor={(item, index) => item.time ? item.time : item.id}            />
 
             <View style={styles.iconContainer}>
                 <TouchableOpacity style={styles.circle}
@@ -122,5 +123,13 @@ const styles = StyleSheet.create({
     iconCont: {
         width: Metrics.width * 0.2,
         height: Metrics.width * 0.12
+    },
+    info: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        width: Metrics.width * 0.7
+    },
+    Text: {
+        color:'#989898'
     }
 });

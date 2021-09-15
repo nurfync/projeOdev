@@ -21,17 +21,24 @@ const Login = props => {
     const onPress_SignUp = () => {
         dispatch(setIsLoadingAC(true)); //loading modalı açılır
 
-        signUp(email, password)
-            .then(responce => {
-                alert("kayıt başarılı")
-                dispatch(setIsLoadingAC(false));
+        if (password === passwordConfirm) {
+            signUp(email, password)
+                .then(responce => {
+                    alert("kayıt başarılı")
+                    dispatch(setIsLoadingAC(false));
 
-            })
-            .catch(reject => {
-                alert(reject)
-                dispatch(setIsLoadingAC(false));
+                })
+                .catch(reject => {
+                    alert(reject)
+                    dispatch(setIsLoadingAC(false));
 
-            })
+                })
+        }
+        else {
+            dispatch(setIsLoadingAC(false));
+            alert('Şifreler eşleşmiyor');
+
+        }
     }
 
     const onPress_SignIn = () => {

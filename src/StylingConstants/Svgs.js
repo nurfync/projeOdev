@@ -17,6 +17,7 @@ import NewMessage from './Svgs/TweetSvgs/newMessage.svg';
 import Send from './Svgs/TweetSvgs/send-mail.svg'
 import User from './Svgs/TweetSvgs/user.svg'
 import Girl from './Svgs/TweetSvgs/girl.svg'
+import Quill from './Svgs/TweetSvgs/quill.svg'
 
 
 export default Svgs = {
@@ -34,5 +35,6 @@ export default Svgs = {
   NewMessage,
   Send,
   User,
-  Girl
+  Girl,
+  Quill
 }

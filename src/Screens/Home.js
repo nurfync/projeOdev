@@ -81,7 +81,7 @@ const Home = props => {
             <View style={styles.iconContainer1}>
                 <TouchableOpacity style={styles.circle}
                     onPress={() => _visibility(true)}>
-                    <Icon svg={Svgs.NewMessage} iconStyle={{ color: 'white' }}></Icon>
+                    <Icon svg={Svgs.Quill} iconStyle={{ color: 'white' }}></Icon>
                 </TouchableOpacity>
             </View>
       </View>

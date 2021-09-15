@@ -69,7 +69,7 @@ const Home = props => {
         dispatch(setIsLoadingAC(false));
     }, [])
     return (
-        <View style={{ flex: 1 }}>
+        <View style={{ flex: 1,position:'relative' }}>
             <View >
                 <FlatList
                     data={DummyData}
@@ -78,9 +78,12 @@ const Home = props => {
                 />
 
             </View>
-            <TouchableOpacity style={{ width: Metrics.width * 0.05 ,position:'absolute', bottom:5, right:5}}>
-                <Icon svg={Svgs.NewMessage} iconStyle={{ color: 'red' }}></Icon>
-            </TouchableOpacity>
+            <View style={styles.iconContainer1}>
+                <TouchableOpacity style={styles.circle}
+                    onPress={() => _visibility(true)}>
+                    <Icon svg={Svgs.NewMessage} iconStyle={{ color: 'white' }}></Icon>
+                </TouchableOpacity>
+            </View>
       </View>
     );
 };
@@ -130,5 +133,23 @@ const styles = StyleSheet.create({
         // marginTop: Metrics.width * 0.03,
         height: Metrics.width * 0.06,
         alignItems: 'center',
-    }
+    },
+    iconContainer1: {
+        flex: 0.15,
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+        flexDirection: 'row',
+        position: 'absolute',
+        right: Metrics.width * 0.003,
+        bottom: Metrics.width * 0.03
+    },
+    circle: {
+        height: Metrics.width * 0.15,
+        width: Metrics.width * 0.15,
+        borderRadius: 100,
+        backgroundColor: '#1DA1F2',
+        marginRight: Metrics.width * 0.02,
+        padding: Metrics.width * 0.03,
+        paddingBottom: 0,
+    },
 });

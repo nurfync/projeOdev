@@ -58,9 +58,11 @@ const Messages = props => {
         <View style={styles.container}>
             <FlatList
                 style={{ flexGrow: 0,marginBottom:Metrics.width*0.2 }}
-                data={messageList}
+                data={messageList.sort((a,b)=>a.time-b.time)}
                 renderItem={_render_Item }
-                keyExtractor={(item, index) => item.time ? item.time : item.id}            />
+                keyExtractor={(item, index) => item.time ? item.time : item.id}
+                inverted
+            />
 
             <View style={styles.iconContainer}>
                 <TouchableOpacity style={styles.circle}

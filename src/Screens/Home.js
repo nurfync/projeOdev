@@ -79,9 +79,8 @@ const Home = props => {
 
             </View>
             <View style={styles.iconContainer1}>
-                <TouchableOpacity style={styles.circle}
-                    onPress={() => _visibility(true)}>
-                    <Icon svg={Svgs.Quill} iconStyle={{ color: 'white' }}></Icon>
+                <TouchableOpacity style={styles.circle}>
+                    <Icon svg={Svgs.Quill} iconStyle={{ color: '#1DA1F2'}}></Icon>
                 </TouchableOpacity>
             </View>
       </View>
@@ -141,15 +140,14 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         position: 'absolute',
         right: Metrics.width * 0.003,
-        bottom: Metrics.width * 0.03
+        bottom: Metrics.width * 0.003
     },
     circle: {
-        height: Metrics.width * 0.15,
-        width: Metrics.width * 0.15,
+        height: Metrics.width * 0.2,
+        width: Metrics.width * 0.2,
         borderRadius: 100,
-        backgroundColor: '#1DA1F2',
+        // backgroundColor: '#1DA1F2',
         marginRight: Metrics.width * 0.02,
-        padding: Metrics.width * 0.03,
         paddingBottom: 0,
     },
 });

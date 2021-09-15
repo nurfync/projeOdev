@@ -61,8 +61,7 @@ const Messages = props => {
                 style={{ flexGrow: 0, marginBottom: Metrics.width * 0.2 }}
                 data={messageList.sort((a, b) => a.time - b.time)}
                 renderItem={_render_Item}
-                keyExtractor={item => item.id}
-                ListEmptyComponent={EmptyComponent}
+                keyExtractor={item =>item.key}
             />
 
             <View style={styles.iconContainer}>

@@ -1,5 +1,5 @@
-import React, { useState,useEffect } from 'react';
-import { View, StyleSheet, TouchableOpacity, FlatList ,Text} from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, StyleSheet, TouchableOpacity, FlatList, Text } from 'react-native';
 import Metrics from '../constant/Metrics'
 import { Svgs } from '../StylingConstants';
 import Icon from '../Utils/Icon';
@@ -8,16 +8,17 @@ import MessageBox from '../Utils/MessageBox';
 
 
 import { getMessages } from '../Firebase/Firebase';
+import EmptyComponent from './EmptyComponent';
 
 
 const Messages = props => {
-    const [messageList, setMessageList] = useState([]); 
+    const [messageList, setMessageList] = useState([]);
 
     const [isVisible, setVisible] = useState(false)
     const _visibility = val => {
         setVisible(val)
     }
-  
+
     useEffect(() => {
         // subscribe
 
@@ -35,33 +36,33 @@ const Messages = props => {
         // item'e basıldığında id'sini gönderiyoruz
         return (
             <TouchableOpacity style={styles.messageTouch}>
-                    <View style={styles.iconCont}>
-                        <Icon svg={Svgs.Girl} iconStyle={{color:'blue'}}></Icon>
-                    </View>
-                    <View>
-                  
+                <View style={styles.iconCont}>
+                    <Icon svg={Svgs.Girl} iconStyle={{ color: 'blue' }}></Icon>
+                </View>
+                <View>
+
                     <View style={styles.info}>
                         <Text style={styles.Text}>{item.to}</Text>
                         <Text style={styles.Text}>{item.time}</Text>
                         {/* <Text>{item.date}</Text> */}
                     </View>
 
-                        <Text
-                            numberOfLines={2}
+                    <Text
+                        numberOfLines={2}
                     >{item.message}</Text>
-                    
-                    </View>
+
+                </View>
             </TouchableOpacity>
         )
     }
     return (
         <View style={styles.container}>
             <FlatList
-                style={{ flexGrow: 0,marginBottom:Metrics.width*0.2 }}
-                data={messageList.sort((a,b)=>a.time-b.time)}
-                renderItem={_render_Item }
-                keyExtractor={(item, index) => item.time ? item.time : item.id}
-                inverted
+                style={{ flexGrow: 0, marginBottom: Metrics.width * 0.2 }}
+                data={messageList.sort((a, b) => a.time - b.time)}
+                renderItem={_render_Item}
+                keyExtractor={item => item.id}
+                ListEmptyComponent={EmptyComponent}
             />
 
             <View style={styles.iconContainer}>
@@ -101,7 +102,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         flexDirection: 'row',
         position: 'absolute',
-        right:Metrics.width*0.003,
+        right: Metrics.width * 0.003,
         bottom: Metrics.width * 0.03
     },
     circle: {
@@ -132,6 +133,6 @@ const styles = StyleSheet.create({
         width: Metrics.width * 0.7
     },
     Text: {
-        color:'#989898'
+        color: '#989898'
     }
 });

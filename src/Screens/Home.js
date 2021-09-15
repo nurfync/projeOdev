@@ -70,12 +70,18 @@ const Home = props => {
     }, [])
     return (
         <View style={{ flex: 1 }}>
-            <FlatList
-                data={DummyData}
-                renderItem={renderItem}
-                keyExtractor={(item, index) =>  item.id }
-            />
-        </View>
+            <View >
+                <FlatList
+                    data={DummyData}
+                    renderItem={renderItem}
+                    keyExtractor={(item, index) => item.id}
+                />
+
+            </View>
+            <TouchableOpacity style={{ width: Metrics.width * 0.05 ,position:'absolute', bottom:5, right:5}}>
+                <Icon svg={Svgs.NewMessage} iconStyle={{ color: 'red' }}></Icon>
+            </TouchableOpacity>
+      </View>
     );
 };
 
